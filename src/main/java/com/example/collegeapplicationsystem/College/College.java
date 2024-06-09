@@ -1,5 +1,6 @@
 package com.example.collegeapplicationsystem.College;
 
+import com.example.collegeapplicationsystem.Application.Application;
 import com.example.collegeapplicationsystem.Student.Student;
 import jakarta.persistence.*;
 
@@ -16,6 +17,9 @@ public class College {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     String name;
+
+    @OneToMany(mappedBy = "college", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Application> applications = new ArrayList<>();
 
 
     // This below makes the infinite mirror for student college thing

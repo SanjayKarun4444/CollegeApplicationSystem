@@ -1,5 +1,6 @@
 package com.example.collegeapplicationsystem.Student;
 
+import com.example.collegeapplicationsystem.Application.Application;
 import com.example.collegeapplicationsystem.College.College;
 import jakarta.persistence.*;
 import org.springframework.context.annotation.Primary;
@@ -27,6 +28,9 @@ public class Student {
                 inverseJoinColumns = @JoinColumn(name="college_id")
         )
         private Set<College> colleges = new HashSet<>();
+
+        @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, orphanRemoval = true)
+        private List<Application> applications;
 
 
         public void addCollege(College college){
