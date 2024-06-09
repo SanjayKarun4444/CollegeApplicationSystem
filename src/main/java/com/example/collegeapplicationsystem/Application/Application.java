@@ -4,6 +4,7 @@ import com.example.collegeapplicationsystem.College.College;
 import com.example.collegeapplicationsystem.Student.Student;
 import jakarta.persistence.*;
 
+@Entity
 public class Application {
 
     @Id
