@@ -17,6 +17,9 @@ public class College {
     private Long id;
     String name;
 
+
+    // This below makes the infinite mirror for student college thing
+
 //    @ManyToMany(mappedBy = "colleges")
 //    private Set<Student> students = new HashSet<>();
 //
