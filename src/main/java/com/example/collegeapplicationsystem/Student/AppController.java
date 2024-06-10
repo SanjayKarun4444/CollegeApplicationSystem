@@ -2,6 +2,7 @@ package com.example.collegeapplicationsystem.Student;
 
 import com.example.collegeapplicationsystem.College.College;
 import com.example.collegeapplicationsystem.DTO.CollegeRegistrationRequest;
+import com.example.collegeapplicationsystem.DTO.StudentCreation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +15,8 @@ public class AppController {
     StudentService studentService;
 
     @PostMapping("/add")
-    public void addStudent(@RequestBody Student student){
-        studentService.addStudent(student);
+    public void addStudent(@RequestBody StudentCreation studentCreation){
+        studentService.addStudent(studentCreation);
     }
 
     @GetMapping("")

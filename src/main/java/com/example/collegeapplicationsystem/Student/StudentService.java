@@ -1,6 +1,7 @@
 package com.example.collegeapplicationsystem.Student;
 
 import com.example.collegeapplicationsystem.College.College;
+import com.example.collegeapplicationsystem.DTO.StudentCreation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.collegeapplicationsystem.College.CollegeRepository;
@@ -22,8 +23,24 @@ public class StudentService implements StudentServiceI{
     }
 
     @Override
-    public void addStudent(Student student) {
+    public void addStudent(StudentCreation studentCreation) {
+        Student student = new Student();
+        student.setName(studentCreation.getName());
+        student.setAge(studentCreation.getAge());
+        student.setGpa(studentCreation.getGpa());
+        student.setSat(studentCreation.getSat());
+        List<String> collegeNames = studentCreation.getColleges();
+        for (String collegeName : collegeNames) {
+            College college = collegeRepository.findByName(collegeName);
+            if (college == null) {
+                college = new College();
+                college.setName(collegeName);
+                collegeRepository.save(college);
+            }
+            student.addCollege(college);
+        }
         studentRepository.save(student);
+
     }
 
     @Override
